@@ -1,7 +1,25 @@
+
+title:  VUE ♂ SVG
+speaker: 芊野
+transition: slide3
+files: /js/demo.js,/css/demo.css,/js/zoom.js
+theme: moon
+usemathjax: yes
+
+[slide]
+
 # VUE ♂ SVG
 
+## ICON FONT ♀♂ VUE 的正确姿势
 
-## inline svg vs icon font
+BY 芊野
+
+[slide]
+
+## INLINE SVG VS ICON FONT
+
+
+[slide]
 
 
 ### 矢量显示
@@ -10,95 +28,99 @@
 
 - inline SVG  滑溜溜的矢量图
 
+[slide]
+
 ![5b6321fda34ee](https://i.loli.net/2018/08/02/5b6321fda34ee.jpg)
 
-
-
-
+[slide]
 
 ### CSS 控制
 
 - icon font 可以通过 CSS 控制图标大小（ 使用 font-size）， 颜色，阴影，旋转等。
 
-- inline SVG  除了这些。 控制图标的各个部分、2使用 CSS 控制 SVG 特有的属性，如描边属性
+- inline SVG 除了这些控制图标的各个部分,使用 CSS 控制 SVG 特有的属性，如描边属性
 
 
+[slide]
 
-### 定位
+定位
 
 - icon font：通过伪元素插入的，它依赖于 line-height ， vertical-align ，letter-spacing ， word-spacing ，字体字形设计，受字体影响。
 
 - inline SVG：SVG 的显示尺寸就是它本身的尺寸
 
-![](https://pic3.zhimg.com/80/43b1103cf12e45fe3e2c161698ec4b8c_hd.jpg)
+[slide]
+
+![](http://www.w3cplus.com/sites/default/files/styles/print_image/public/blogs/2014/1405/svg-2.jpg)
+
+[slide]
+
+![](http://www.w3cplus.com/sites/default/files/styles/print_image/public/blogs/2014/1405/svg-3.jpg)
 
 
+[slide]
 
-![](https://pic2.zhimg.com/80/bf4526ea8bdc780a5293cd202344dc88_hd.jpg)
+icon font 
 
+- 它被跨域加载，而没有使用正确的 CORS 头信息，例如 Firefox。
 
-
-### 诡异的问题
-
-icon font: 
-
-- 它被跨域加载，而没有使用正确的 CORS 头信息，Firefox。
-
-- 因为任何原因，字体文件加载失败（网络抽风，服务器故障等
+- 因为任何原因，字体文件加载失败（网络抽风，服务器故障等)
 
 - 一些奇怪的 Chrome 漏洞会跳过 @font-face 规则，并使用 fallback 的字体取代它。
 
 - 一些神奇的浏览器不支持 @font-face。
 
-
+[slide]
 
 inline SVG  
-inline SVG 是在文档流中，如果浏览器支持，它就会显示
+- inline SVG 是在文档流中，如果浏览器支持，它就会显示
 
-
+[slide]
 
 ### 语义
 
-- icon font  
-如果是正确地使用，字体还是图标。
+- icon font 如果是正确地使用，字体还是图标。
 
-- inline SVG  
-图标是小的图像。
+- inline SVG  图标是小的图像。
 
 
-
-
+[slide]
 
 ### 无障碍
 
 - icon font  屏幕阅读识别为「文本」从而朗读，而视觉障碍人士并不需要这些无意义的「文本」。
 
-- inline SVG  svg 可适当的添加，如 <title>  
-、<desc>和 aria-labelledby 可以很好地透过浏览器传达信息。
+- inline SVG  svg 可适当的添加，如 `title`  
+`desc` 和 aria-labelledby 可以很好地透过浏览器传达信息。
 
 
+[slide]
 
 ### 浏览器兼容性
 
-- icon font  
-很广泛。即使是 IE 6。
+- icon font  很广泛。即使是 IE 6。
 
 - inline SVG  
-还不错，问题出在 IE 8 和 Android 2.3-。可以使用 fallback 规则，但不完美。
+还不错，问题出在 IE 8 和 Android 2.3。可以使用 fallback 规则，但不完美。
 
 
+[slide]
 
 ## VUE ICON
 
-
+[slide]
 
 ## [vue-awesome](https://github.com/Justineo/vue-awesome) 实现
+
+
+[slide]
 
 ![5b632884c46b5](https://i.loli.net/2018/08/02/5b632884c46b5.png)
 
 
+[slide]
 
-
+### 缺点
 
 - N 个同样的图标就会生成 N 份同样的 inline svg
 
@@ -108,11 +130,11 @@ inline SVG 是在文档流中，如果浏览器支持，它就会显示
 
 - 自定义图标不方便
 
-
-
-
+[slide]
 
 ## 页面中使用 SVG 的方式
+
+[slide]
 
 - Img/object 标签直接使用，使用时单独请求。项目中图标过多的化会带来过多的 http 请求
 
@@ -122,22 +144,19 @@ inline SVG 是在文档流中，如果浏览器支持，它就会显示
 
 - Inline svg 复用性差，效率低
 
-  
-
-
-
-
+[slide]
 
 ## SVG SYMBOLS SPRITE
 
-
+[slide]
 
 ### `<symbol>` && `<use>`
 
-
+[slide]
 
 `<symbol>` 元素用来对元素进行分组,它不会被直接显示，大概相当于定义一个模板，然后使用 `<use>` 元素引用并进行渲染。
 
+[slide]
 
 假设有个 SVG 文件: `icon.svg`
 
@@ -153,6 +172,8 @@ inline SVG 是在文档流中，如果浏览器支持，它就会显示
 </svg>
 ```
 
+[slide]
+
 页面使用：
 
 ```xml
@@ -160,7 +181,10 @@ inline SVG 是在文档流中，如果浏览器支持，它就会显示
   <use xlink:href="./icon.svg#heart"/>
 </svg>
 ```
-在IE中通过<use>引用外部SVG文件的方法是不可行的，IE9以上也不支持，Edge 才支持。
+在IE中通过 <use> 引用外部SVG文件的方法是不可行的，IE9以上也不支持，Edge 才支持。
+
+[slide]
+
 
 正确的使用姿势应该是内联使用：
 
@@ -178,7 +202,11 @@ inline SVG 是在文档流中，如果浏览器支持，它就会显示
 </body>
 ```
 
+[slide]
+
 ## Vue + SVG SYMBOLS SPRITE = VUE ICON
+
+[slide]
 
 webpack 集成 svg-sprite，使用 svg-sprite 制作 svg symbols sprite
 
@@ -197,6 +225,8 @@ webpack 集成 svg-sprite，使用 svg-sprite 制作 svg symbols sprite
 }
 ```
 
+[slide]
+
 注意避免 icons 下的 svg 文件被 url-loader 处理。
 
 ```javascript
@@ -211,6 +241,8 @@ webpack 集成 svg-sprite，使用 svg-sprite 制作 svg symbols sprite
 }
 ```
 
+[slide]
+
 封装使用时的 svg component:
 
 
@@ -221,6 +253,9 @@ webpack 集成 svg-sprite，使用 svg-sprite 制作 svg symbols sprite
   </svg>
 </template>
 ```
+
+
+[slide]
 
 ```javascript
 const requireAll = requireContext => requireContext.keys().map(requireContext);
@@ -252,8 +287,9 @@ export default {
 };
 ```
 
+[slide]
 
-使用 svgo 对 svg 文件进行精简：
+使用 [svgo](https://github.com/svg/svgo) 对 svg 文件进行精简：
 
 ```javascript
 const svgoConfig = require('../config/svgo-config.json');
@@ -276,13 +312,18 @@ const svgoConfig = require('../config/svgo-config.json');
 },
 ```
 
-## 使用 iconfont
+[slide]
+
+## 使用 [iconfont](http://www.iconfont.cn/)
+
+[slide]
 
 ```html
 <script src="//at.alicdn.com/t/font_775504_9ioygazhi8o.js"></script>
 ```
 
-### main.vue
+[slide]
+`main.vue`
 
 ```html
 <template>
@@ -308,8 +349,9 @@ export default {
 }
 </style>
 ```
+[slide]
 
-### icon-font.js
+`icon-font.js`
 
 ```javascript
 import main from './main'
@@ -331,7 +373,8 @@ main.install = function install(Vue) {
 export default main;
 ```
 
-### use
+[slide]
+`use`
 ```javascript
 import IconFont from './icon-font';
 // regist 自定义 url
@@ -342,14 +385,16 @@ Vue.use(IconFont);
 ```html
 <icon-font class="icon" name="icon-name"></icon-font>
 ```
+[slide]
 
 
-### 参考文章：
+参考文章：
 
 - [使用SVG symbols建立图标系统](https://www.w3cplus.com/svg/how-to-create-an-icon-system-using-svg-symbols.html)
 - [基于svg-sprite的svg icon方案实践](http://tech.lede.com/2018/03/28/fe/svg-icon/)
 - [Inline SVG vs Icon Fonts](https://css-tricks.com/icon-fonts-vs-svg/)
 
 
+[slide]
 
 END THK ~

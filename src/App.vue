@@ -17,7 +17,6 @@
 
 <script>
 import SvgIcon from './icon';
-import IconFont from './icon-font'
 export default {
   name: 'app',
   data () {
@@ -26,7 +25,7 @@ export default {
     }
   },
 
-  components: { SvgIcon, IconFont }
+  components: { SvgIcon }
 }
 </script>
 
